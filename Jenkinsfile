@@ -5,7 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build the code using Maven"
-
+            }
+            post{
+                success{
+                    mail to: "pasanransika1@gmail.com"
+                    subject: "Build Status Email!"
+                    body: "Build was successfu!!"
+                }
             }
         }
         
