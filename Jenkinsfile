@@ -6,13 +6,6 @@ pipeline {
             steps {
                 echo "Build the code using Maven"
             }
-            post{
-                success{
-                    mail to: "pasanransika1@gmail.com",
-                    subject: "Build Status Email!",
-                    body: "Build was successfu!!"
-                }
-            }
         }
         
         stage('Unit and Integration Tests') {
@@ -51,5 +44,11 @@ pipeline {
                 echo "Deploy the application to a production server using a tool like AWS CLI or Jenkins SSH plugin"
             }
         }
-    }
+    }post{
+                success{
+                    mail to: "pasanransika1@gmail.com",
+                    subject: "Pipeline Status Email!",
+                    body: "Pipeline was successfull!!"
+                }
+            }
 }
